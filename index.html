@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15 Days to a Calmer, More Confident You</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#152420;
+    --ink-soft:#1e332d;
+    --paper:#F4F0E6;
+    --paper-dim:#E7E1D2;
+    --moss:#6B8A75;
+    --moss-deep:#40584A;
+    --gold:#CBA35E;
+    --mist:#AABBAF;
+    --rust:#AD5B41;
+    --line: rgba(244,240,230,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--moss-deep);
+  }
+  .eyebrow.on-dark{color:var(--gold);}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  section{padding:88px 0;}
+  @media(max-width:720px){section{padding:60px 0;} .wrap{padding:0 22px;}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--paper);
+    position:relative;
+    overflow:hidden;
+    padding:0;
+  }
+  .hero-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:120px 32px 96px;
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  @media(max-width:860px){
+    .hero-inner{grid-template-columns:1fr; padding:90px 22px 64px;}
+  }
+  .hero h1{
+    font-size:clamp(2.5rem,5.4vw,4.1rem);
+    color:var(--paper);
+    margin-top:18px;
+    line-height:1.04;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+  }
+  .hero p.sub{
+    max-width:46ch;
+    color:var(--mist);
+    font-size:1.08rem;
+    margin-top:22px;
+  }
+  .stat-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:30px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--mist);
+    letter-spacing:0.02em;
+  }
+  .dot-live{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--moss);
+    animation:pulse-dot 2.4s ease-in-out infinite;
+    flex-shrink:0;
+  }
+  @keyframes pulse-dot{
+    0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(107,138,117,0.5);}
+    50%{opacity:0.6; box-shadow:0 0 0 6px rgba(107,138,117,0);}
+  }
+  .cta-row{display:flex; gap:16px; margin-top:38px; flex-wrap:wrap; align-items:center;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:0.94rem;
+    padding:15px 26px;
+    border-radius:3px;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  }
+  .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+  .btn-primary{
+    background:var(--gold);
+    color:var(--ink);
+  }
+  .btn-primary:hover{transform:translateY(-1px); background:#dbb877;}
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--paper);
+    font-weight:500;
+    font-size:0.88rem;
+  }
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
+
+  /* breathing signature */
+  .breathe-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .breathe-wrap svg{width:100%; max-width:340px; height:auto;}
+  .tangle{
+    fill:none;
+    stroke:var(--mist);
+    stroke-width:1.3;
+    stroke-linecap:round;
+    opacity:0.85;
+    stroke-dasharray:900;
+    stroke-dashoffset:0;
+    animation:untangle 3.6s cubic-bezier(.5,0,.2,1) forwards;
+  }
+  @keyframes untangle{
+    0%{stroke-dashoffset:0; opacity:0.9;}
+    100%{stroke-dashoffset:900; opacity:0;}
+  }
+  .breath-circle{
+    fill:none;
+    stroke:var(--gold);
+    stroke-width:1.6;
+    opacity:0;
+    transform-origin:center;
+    animation:reveal 1.2s ease forwards 2.6s, breathe 5.2s ease-in-out infinite 3.6s;
+  }
+  @keyframes reveal{ to{opacity:1;} }
+  @keyframes breathe{
+    0%,100%{transform:scale(0.86);}
+    45%{transform:scale(1.04);}
+    55%{transform:scale(1.04);}
+  }
+  .breath-word{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    fill:var(--mist);
+    letter-spacing:0.14em;
+    opacity:0;
+    animation:reveal 1s ease forwards 3.2s;
+  }
+
+  /* ---------- SYMPTOMS ---------- */
+  .symptoms{background:var(--paper);}
+  .symptoms .kicker{max-width:56ch;}
+  .symptoms h2{font-size:clamp(1.9rem,3.4vw,2.5rem); margin-top:14px;}
+  .symptoms .lede{color:var(--moss-deep); font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; margin-top:16px;}
+  .symptom-grid{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--paper-dim);
+    border:1px solid var(--paper-dim);
+  }
+  @media(max-width:760px){.symptom-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.symptom-grid{grid-template-columns:1fr;}}
+  .symptom{
+    background:var(--paper);
+    padding:26px 22px;
+    font-size:0.98rem;
+  }
+  .symptom-mark{
+    display:block;
+    width:18px;height:1px;
+    background:var(--rust);
+    margin-bottom:14px;
+  }
+  .symptoms-close{
+    margin-top:44px;
+    font-family:'Fraunces',serif;
+    font-size:1.3rem;
+    max-width:40ch;
+  }
+
+  /* ---------- SYSTEM ---------- */
+  .system{background:var(--ink-soft); color:var(--paper); padding:60px 0;}
+  .system .wrap > .eyebrow{color:var(--gold);}
+  .system h2{color:var(--paper); font-size:clamp(1.6rem,2.8vw,2.1rem); margin-top:10px; max-width:22ch;}
+  .contrast{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin-top:26px;
+    max-width:600px;
+  }
+  @media(max-width:620px){.contrast{grid-template-columns:1fr;}}
+  .contrast-box{
+    border:1px solid var(--line);
+    padding:16px 18px;
+    border-radius:2px;
+  }
+  .contrast-box.old{opacity:0.55;}
+  .contrast-box.new{border-color:var(--gold);}
+  .contrast-label{font-family:'IBM Plex Mono',monospace; font-size:0.64rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--mist);}
+  .contrast-box p{font-family:'Fraunces',serif; font-size:1.02rem; font-style:italic; margin-top:8px; color:var(--paper);}
+
+  .stages{
+    margin-top:34px;
+    display:flex;
+    flex-direction:column;
+  }
+  .stage{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:20px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+  }
+  .stages .stage:last-child{border-bottom:1px solid var(--line);}
+  @media(max-width:620px){.stage{grid-template-columns:48px 1fr; gap:14px;}}
+  .stage-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--gold);
+    padding-top:2px;
+  }
+  .stage h3{font-size:1.02rem; color:var(--paper); font-weight:500;}
+  .stage p{color:var(--mist); margin-top:4px; max-width:52ch; font-size:0.88rem; line-height:1.45;}
+
+  /* ---------- INSTRUCTOR ---------- */
+  .instructor{background:var(--paper);}
+  .instructor .grid{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:52px;
+    align-items:start;
+  }
+  @media(max-width:700px){.instructor .grid{grid-template-columns:1fr;}}
+  .avatar{
+    width:180px;height:180px;
+    border-radius:50%;
+    background:linear-gradient(150deg,var(--moss),var(--moss-deep));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--paper);
+    font-family:'Fraunces',serif;
+    font-size:2.6rem;
+    flex-shrink:0;
+  }
+  .instructor h2{font-size:clamp(1.8rem,3vw,2.3rem);}
+  .instructor .role{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; color:var(--moss-deep); letter-spacing:0.08em; margin-top:6px; text-transform:uppercase;}
+  .instructor blockquote{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.45rem;
+    color:var(--ink);
+    margin:22px 0 0;
+    padding-left:20px;
+    border-left:2px solid var(--rust);
+    line-height:1.35;
+  }
+  .instructor p.body{margin-top:20px; max-width:60ch; color:#3c463f;}
+  .instructor p.tagline{
+    margin-top:18px;
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--moss-deep);
+    font-size:1.1rem;
+  }
+
+  /* ---------- SOCIAL PROOF STRIP ---------- */
+  .proof{
+    background:var(--gold);
+    color:var(--ink);
+    padding:48px 0;
+  }
+  .proof .wrap{display:flex; align-items:center; gap:28px; flex-wrap:wrap; justify-content:space-between;}
+  .proof-num{font-family:'Fraunces',serif; font-size:3rem; line-height:1;}
+  .proof-text{max-width:44ch; font-size:0.98rem;}
+  .proof-tags{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; opacity:0.8; margin-top:6px;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{background:var(--paper);}
+  .disclosure{
+    background:#F4E7DE;
+    border:1px solid var(--rust);
+    color:var(--rust);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.76rem;
+    padding:14px 18px;
+    border-radius:2px;
+    margin-top:36px;
+    max-width:640px;
+  }
+  .testi-grid{
+    margin-top:34px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+  }
+  @media(max-width:700px){.testi-grid{grid-template-columns:1fr;}}
+  .testi{
+    padding:30px 28px;
+    background:var(--paper);
+    border:1px solid var(--paper-dim);
+    border-radius:2px;
+  }
+  .testi h3{font-family:'Fraunces',serif; font-size:1.18rem; font-weight:500; font-style:italic;}
+  .testi p{margin-top:14px; font-size:0.96rem; color:#3c463f;}
+  .testi .who{margin-top:16px; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; letter-spacing:0.06em; color:var(--moss-deep); text-transform:uppercase;}
+
+  /* ---------- PRICING / CTA ---------- */
+  .pricing{
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+  }
+  .pricing .wrap{max-width:640px;}
+  .price-tag{
+    font-family:'Fraunces',serif;
+    font-size:clamp(3.4rem,9vw,5rem);
+    color:var(--gold);
+    margin-top:8px;
+  }
+  .price-tag sup{font-size:0.4em; vertical-align:0.5em; margin-right:4px;}
+  .includes{
+    margin-top:34px;
+    text-align:left;
+    display:inline-block;
+  }
+  .includes li{list-style:none; display:flex; gap:12px; padding:9px 0; font-size:0.98rem; color:var(--mist);}
+  .includes li::before{content:"—"; color:var(--gold); flex-shrink:0;}
+  .pricing .btn-primary{margin-top:38px; padding:17px 34px; font-size:1rem;}
+  .pricing .fine{margin-top:16px; font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--mist); letter-spacing:0.04em;}
+
+  /* ---------- PROGRAM FEE ---------- */
+  .program-fee{background:var(--paper); text-align:center;}
+  .program-fee .wrap{max-width:620px;}
+  .pf-sub{margin-top:16px; color:#3c463f; font-size:1rem;}
+  .pf-card{
+    margin-top:40px;
+    background:var(--ink);
+    color:var(--paper);
+    border-radius:4px;
+    padding:44px 36px;
+    text-align:left;
+  }
+  .pf-price{
+    font-family:'Fraunces',serif;
+    font-size:clamp(2.6rem,6vw,3.4rem);
+    color:var(--gold);
+    text-align:center;
+  }
+  .pf-price sup{font-size:0.42em; vertical-align:0.6em; margin-right:2px;}
+  .pf-emi-badge{
+    display:block;
+    width:fit-content;
+    margin:14px auto 0;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;
+    font-weight:500;
+    font-size:0.78rem;
+    letter-spacing:0.02em;
+    padding:8px 16px;
+    border-radius:100px;
+  }
+  .pf-includes{margin-top:32px; list-style:none;}
+  .pf-includes li{
+    display:flex; gap:12px; padding:9px 0; font-size:0.96rem; color:var(--paper);
+    border-top:1px solid var(--line);
+  }
+  .pf-includes li:first-child{border-top:none;}
+  .pf-includes li::before{content:"—"; color:var(--gold); flex-shrink:0;}
+  .pf-note{
+    margin-top:28px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+    font-size:0.86rem;
+    color:var(--mist);
+    line-height:1.65;
+  }
+  @media(max-width:560px){.pf-card{padding:32px 24px;}}
+
+  /* ---------- WHY NOW ---------- */
+  .why{background:var(--paper); text-align:center;}
+  .why .wrap{max-width:560px;}
+  .why p.body{margin-top:16px; color:#3c463f;}
+  .why .btn-primary-alt{
+    margin-top:30px;
+    display:inline-flex;
+    background:var(--rust);
+    color:var(--paper);
+    padding:15px 28px;
+    border-radius:3px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.94rem;
+  }
+  .why .btn-primary-alt:hover{background:#93492f;}
+
+  /* ---------- DISCLAIMER ---------- */
+  .disclaimer{background:var(--paper-dim); padding:56px 0;}
+  .disclaimer .wrap{max-width:680px;}
+  .disclaimer h3{font-family:'IBM Plex Mono',monospace; font-size:0.76rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--moss-deep); font-weight:500;}
+  .disclaimer p{font-size:0.92rem; color:#4a544d; margin-top:14px;}
+  .helpline{
+    margin-top:22px;
+    display:inline-block;
+    padding:14px 20px;
+    background:var(--paper);
+    border:1px solid var(--moss);
+    border-radius:2px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.86rem;
+  }
+  .helpline b{color:var(--moss-deep);}
+
+  /* ---------- FINAL CTA / FOOTER ---------- */
+  .final{
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    padding:96px 0 64px;
+  }
+  .final .eyebrow{color:var(--gold);}
+  .final h2{font-size:clamp(2rem,4vw,2.8rem); margin-top:14px; max-width:16ch; margin-left:auto; margin-right:auto;}
+  .final p.sub{color:var(--mist); margin-top:16px;}
+  .final .btn-primary{margin-top:30px; padding:17px 32px;}
+  .final .slots{margin-top:20px; font-family:'IBM Plex Mono',monospace; font-size:0.74rem; color:var(--mist); font-style:italic;}
+  footer{
+    margin-top:64px;
+    padding-top:28px;
+    border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    color:var(--mist);
+    letter-spacing:0.04em;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow on-dark">15-Day Mental Wellness System</span>
+      <h1>Struggling with anxiety, overthinking or depression?</h1>
+      <p class="sub">A structured, 15-day program for breaking the cycle of overthinking, fear and emotional exhaustion — built from lived experience, not slogans.</p>
+      <div class="stat-line"><span class="dot-live"></span> 50+ students currently learning and practicing the system</div>
+      <div class="cta-row">
+        <a href="https://pages.razorpay.com/pl_T4065LjnY0HXYm/view" class="btn btn-primary" target="_blank" rel="noopener">Book your ₹199 consultation →</a>
+        <a href="#system" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+    <div class="breathe-wrap" aria-hidden="true">
+      <svg viewBox="0 0 300 300">
+        <path class="tangle" d="M150 150 C 90 90, 220 60, 180 130 C 140 200, 60 170, 100 100 C 140 30, 240 100, 190 170 C 140 240, 60 210, 90 150 C 120 90, 210 110, 170 160" />
+        <circle class="breath-circle" cx="150" cy="150" r="78"/>
+        <text class="breath-word" x="150" y="154" text-anchor="middle">BREATHE</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- SYMPTOMS -->
+<section class="symptoms">
+  <div class="wrap">
+    <span class="eyebrow">Does this feel like you?</span>
+    <h2>You look fine from the outside. But inside, your mind never seems to switch off.</h2>
+    <p class="lede">If any of this sounds familiar, you're not the only one — and you're not stuck here.</p>
+    <div class="symptom-grid">
+      <div class="symptom"><span class="symptom-mark"></span>Constant overthinking</div>
+      <div class="symptom"><span class="symptom-mark"></span>Feeling anxious for no obvious reason</div>
+      <div class="symptom"><span class="symptom-mark"></span>Fear about the future</div>
+      <div class="symptom"><span class="symptom-mark"></span>Difficulty sleeping peacefully</div>
+      <div class="symptom"><span class="symptom-mark"></span>Racing thoughts</div>
+      <div class="symptom"><span class="symptom-mark"></span>Feeling emotionally drained</div>
+      <div class="symptom"><span class="symptom-mark"></span>Losing interest in things you once enjoyed</div>
+      <div class="symptom"><span class="symptom-mark"></span>Worrying about health, career, relationships or family</div>
+      <div class="symptom"><span class="symptom-mark"></span>Feeling like nobody truly understands</div>
+    </div>
+    <p class="symptoms-close">You don't have to figure everything out alone. There's a structured system to understand your thoughts, manage your responses and build healthier habits.</p>
+  </div>
+</section>
+
+<!-- PROGRAM FEE -->
+<section class="program-fee">
+  <div class="wrap">
+    <span class="eyebrow">The full program</span>
+    <h2 style="margin-top:14px;">The Full 15-Day Program</h2>
+    <p class="pf-sub">A complete 15-day system — daily sessions, structured exercises, and direct guidance from Amandeep through all five stages.</p>
+
+    <div class="pf-card">
+      <div class="pf-price"><sup>₹</sup>9,999</div>
+      <div class="pf-emi-badge">✓ EMI plans available — ask during your consultation</div>
+      <ul class="pf-includes">
+        <li>Full 15-day structured curriculum, all 5 stages</li>
+        <li>Daily guided sessions and practical exercises</li>
+        <li>Direct support from Amandeep throughout the program</li>
+        <li>Tools and habits you keep practicing after the program ends</li>
+      </ul>
+      <p class="pf-note">This program is a mental wellness and educational support system, not a guaranteed cure. Effort and consistency matter, and results vary from person to person — what we commit to is showing up with you, every day, for the full 15 days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM -->
+<section class="system" id="system">
+  <div class="wrap">
+    <span class="eyebrow">Introducing the system</span>
+    <h2>Not "don't worry." A plan for what to do when the worrying starts.</h2>
+
+    <div class="contrast">
+      <div class="contrast-box old">
+        <span class="contrast-label">What you usually hear</span>
+        <p>"Don't worry."</p>
+      </div>
+      <div class="contrast-box new">
+        <span class="contrast-label">What we teach instead</span>
+        <p>What to do when the worrying starts.</p>
+      </div>
+    </div>
+
+    <div class="stages">
+      <div class="stage">
+        <span class="stage-num">01</span>
+        <div><h3>Understanding your mind</h3><p>Learn why certain thoughts, fears and emotional patterns keep repeating.</p></div>
+      </div>
+      <div class="stage">
+        <span class="stage-num">02</span>
+        <div><h3>Breaking the overthinking cycle</h3><p>Practical techniques to respond differently when your mind starts spiralling.</p></div>
+      </div>
+      <div class="stage">
+        <span class="stage-num">03</span>
+        <div><h3>Building emotional control</h3><p>Healthier ways of dealing with difficult emotions instead of constantly fighting them.</p></div>
+      </div>
+      <div class="stage">
+        <span class="stage-num">04</span>
+        <div><h3>Creating better daily habits</h3><p>Routines that support better sleep, consistency, self-awareness and wellbeing.</p></div>
+      </div>
+      <div class="stage">
+        <span class="stage-num">05</span>
+        <div><h3>Building long-term confidence</h3><p>Not just feeling better for one day — understanding the system well enough to keep practicing it after the program ends.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section class="instructor">
+  <div class="wrap grid">
+    <div class="avatar">AG</div>
+    <div>
+      <span class="eyebrow">Meet your instructor</span>
+      <h2>Amandeep Singh Grewal</h2>
+      <div class="role">Founder, 15-Day Mental Wellness System</div>
+      <blockquote>"I know what it feels like because I've been there myself."</blockquote>
+      <p class="body">Amandeep personally experienced anxiety and depression for around five years. During that time, he tried to understand why the same thoughts, fears and emotional patterns kept coming back — and eventually found a structured system that helped him work through those patterns and regain control of his daily life.</p>
+      <p class="tagline">His approach comes from personal experience: practical exercises, understanding your thought patterns, and developing healthier responses. Not "think positive" — a process you can practice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<section class="proof">
+  <div class="wrap">
+    <div>
+      <div class="proof-num">50+</div>
+      <div class="proof-text">Active students from different backgrounds across India, currently learning and practicing the program.</div>
+    </div>
+    <div class="proof-tags">Online sessions · Structured guidance · Practical exercises · Supportive environment</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="wrap">
+    <span class="eyebrow">What students say</span>
+    <h2 style="margin-top:14px; font-size:clamp(1.8rem,3.2vw,2.3rem);">Awareness, structure, and something to practice.</h2>
+    <div class="testi-grid">
+      <div class="testi">
+        <h3>"Ab raat mein aaram se so paati hoon."</h3>
+        <p>"Mai pehle raat me so nahi paati thi, dar lagta, phobia sa lagta tha. Par sir aapke classes join karne ke baad bahut help mili — mai abhi raat mein aaram se so pa rahi hoon."</p>
+        <div class="who">Prachi</div>
+      </div>
+      <div class="testi">
+        <h3>"Ab bahut theek hoon."</h3>
+        <p>"Sir, mujhe har cheez mein lagta tha log mujhe judge karenge, dil dharakta tha. Par abhi bahut theek hua hoon."</p>
+        <div class="who">Raghav</div>
+      </div>
+      <div class="testi">
+        <h3>"Ab bahut better feel karti hoon."</h3>
+        <p>"Mujhe har time negative thinking hoti thi, marne ka dar lagta tha, road mein chalne ka dar lagta tha. Par aapke classes ke baad bahut better feel karti hoon, thank you sir."</p>
+        <div class="who">Shruti</div>
+      </div>
+      <div class="testi">
+        <h3>"I feel like I can be calm and say the words I want to say."</h3>
+        <p>Every time I want to talk to someone, I feel like I can't because I don't even know what to say to them. But after taking classes, I feel like I can be calm and say the words that I want to say.</p>
+        <div class="who">Devjit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="book">
+  <div class="wrap">
+    <span class="eyebrow on-dark">Start with one conversation</span>
+    <h2 style="color:var(--paper); margin-top:14px;">Your Consultation</h2>
+    <div class="price-tag"><sup>₹</sup>199</div>
+    <ul class="includes">
+      <li>Discuss what you're currently experiencing</li>
+      <li>Understand how the 15-day program works</li>
+      <li>Ask questions about the system</li>
+      <li>Find out whether the program fits your situation</li>
+    </ul>
+    <div>
+      <a href="https://pages.razorpay.com/pl_T4065LjnY0HXYm/view" class="btn btn-primary" target="_blank" rel="noopener">Book my ₹199 consultation</a>
+    </div>
+    <div class="fine">Secure your consultation slot · ₹199</div>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow">Why start now?</span>
+    <h2 style="margin-top:14px; font-size:clamp(1.7rem,3vw,2.1rem);">Take the first step today.</h2>
+    <p class="body">Anxiety and persistent low mood can affect your work, relationships, sleep and everyday life. You don't need to wait until things become overwhelming before seeking support.</p>
+    <a href="https://pages.razorpay.com/pl_T4065LjnY0HXYm/view" class="btn-primary-alt" target="_blank" rel="noopener">Book consultation now →</a>
+  </div>
+</section>
+
+<footer style="background:var(--ink); text-align:center; padding:28px 0; font-family:'IBM Plex Mono',monospace; font-size:0.7rem; color:var(--mist); letter-spacing:0.04em; border-top:1px solid var(--line);">© 15-Day Mental Wellness System · Amandeep Singh Grewal</footer>
+
+</body>
+</html>
